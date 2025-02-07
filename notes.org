@@ -1,0 +1,65 @@
+#+TITLE: Kotlin Android App Development
+#+DESCRIPTION: Some simple notes I took when taking the Udemy course: Android Jetpack Compose: The Comprehensive Bootcamp
+
+ - [X] Section 1: Introduction
+ - [X] Section 2: Source code (links etc.)
+ - [X] Section 3: Windows setup
+ - [X] Section 4: Mac setup
+ - [X] Section 5: build an App - BizCard
+ - [X] Section 6: Kotlin variables and types
+   + declare with =var=: *mutable*
+   + declare with =val=: *immutable*
+   + Integer types:
+     - Long (64 bits)
+     - Int (32 bits)
+     - Byte (8 bits)
+     - Short (16 bits)
+   + Floating point types:
+     - Float (32 bits)
+     - Double (64 bits)
+ - [X] Section 7: Kotlin Loops and Branching
+   + =when= keyword (similar to =switch=), which needs an =else= at the end. (unless all states are handled)
+   + Ranges: example 1 til 100: =1..100=
+   + Basic for loop (like python): =for (i in 1..10)=
+ - [X] Section 8: Kotlin functions
+   + quick functions return: you can write a function like this =fun calculateCatAge(age: Int): Int = age * 7= which is a shorter version of opening the function and returning =age * 7=
+   + Lambda expressions: example (assign to variable sum) =val sum: (Int, Int) -> Int = { a, b -> a + b }=
+     * here =(Int, Int) -> Int= is the type!
+     * a, b (first) are the parameters
+     * a + b is the body
+     * you can use =it= if the lambda expression type has an input and 1 parameter. =it= is there *WITHOUT writing the parameters* (so its shorter)
+     * =Unit= means =void= or nothing in kotlin!! *!important*
+   + Functions as *parameters* to other functions:
+     * If the *last parameter* of a function a function is then you can invoke a lambda (outside the parenthesis)
+     #+begin_src
+     // Define the function
+     fun enhancedMessage(message: String, funAsParameter: () -> Int) {
+         println("$message ${funAsParameter()}")
+     }
+    
+     // Call the function
+     enhancedMessage("hello Paulo") {
+       add(12,12)
+     }
+    
+     #+end_src
+
+ - [X] Section 9: Kotlin Collections
+   + =List=, =ArrayList=
+   + create with =listOf()= or =mutableListOf=
+   + iterate: 
+     * =for (item in list)=
+     * =list.forEach { println(it) }= (you can access element with =it=)
+
+   + only mutable collection: =add()=, =remove()=, =removeAt(index)=
+
+     + size property
+     + access with =get(index)= or with =list[index]=
+     + =indexOf(value)= find the value and return index
+
+   + =Set= (only unique values) and =Map= (key value pairs (dictionary))
+     * =setOf(val1, val2, val3)=
+     * =mapOf("key" to val, "key1" to val1)=
+     * also =mutableMapOf() and mutableSetOf()=
+
+   + create empty stuff with =emptyList<T>(), emptySet<T>() and emptyMap<T, K>()=
